@@ -1,1 +1,105 @@
+# ==============================================================================
+# .gitignore — ISOCBC NATIONAL BOOK
+# ==============================================================================
+# Keeps secrets, dependency trees, editable masters and generated output out of
+# Git. Only SOURCE is committed: core_directives, agents, disciplines, committed
+# diagrams, and the root config templates.
+# ==============================================================================
 
+# --- Secrets and local environment -------------------------------------------
+# HIGHEST PRIORITY. .env must never be committed. The template IS committed.
+.env
+.env.*
+!.env.template
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+*.keystore
+*.token
+*.credential
+secrets/
+credentials/
+
+# --- Dependencies and virtual environments ------------------------------------
+node_modules/
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+site-packages/
+.pnpm-store/
+.yarn/
+.npm/
+.bun/
+
+# --- Build output and caches --------------------------------------------------
+build/
+dist/
+out/
+target/
+.next/
+.nuxt/
+.svelte-kit/
+.turbo/
+.vite/
+.cache/
+.tox/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+coverage/
+*.egg-info/
+
+# --- Generated book output ----------------------------------------------------
+# Produced from disciplines/ by the writer pipeline. Output, not source.
+_output/
+_drafts/
+_export/
+*.epub
+*.mobi
+*.aux
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+
+# --- Editable diagram masters and media ---------------------------------------
+# Committed diagrams are the exported artefacts; masters are regenerable.
+assets/diagrams/_source/
+assets/**/*.psd
+assets/**/*.ai
+assets/**/*.fig
+assets/**/*.sketch
+assets/**/*.xcf
+assets/**/*.raw
+assets/**/*.tiff
+
+# --- Large reference material (grounding corpus) ------------------------------
+# KICD designs and approved textbooks are large; they live outside the repo,
+# referenced by KICD_DESIGNS_DIR / KLB_SOURCE_DIR in .env.
+_reference/
+_kicd/
+_kib/
+
+# --- Logs, OS and editor noise ------------------------------------------------
+*.log
+logs/
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.history/
+tmp/
+temp/
+scratch/
