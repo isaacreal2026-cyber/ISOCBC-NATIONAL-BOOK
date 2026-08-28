@@ -1,0 +1,127 @@
+# ==============================================================================
+# .cursorignore — files excluded from Cursor's codebase indexing and AI context
+# ==============================================================================
+# Purpose: keep the agent's context window on the writing system (core_directives,
+# agents, disciplines) instead of burning it on secrets, binaries, dependencies
+# and generated output. Anything listed here is NOT read into context.
+#
+# Note: this is an INDEXING exclusion, not a security control and not a Git
+# ignore. Secrets must ALSO be in .gitignore, and .env must never be committed.
+# ==============================================================================
+
+# --- Secrets and local environment -------------------------------------------
+# Highest priority: never let a local .env or credential reach model context.
+.env
+.env.*
+!.env.template
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+*.keystore
+secrets/
+credentials/
+*.token
+*.credential
+
+# --- Version control internals ------------------------------------------------
+.git/
+.gitignore
+.gitattributes
+.github/
+*.patch
+*.diff
+
+# --- Dependencies and virtual environments ------------------------------------
+node_modules/
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+site-packages/
+.pnpm-store/
+.yarn/
+.npm/
+.bun/
+
+# --- Build output, caches and generated artefacts -----------------------------
+build/
+dist/
+out/
+target/
+.next/
+.nuxt/
+.svelte-kit/
+.turbo/
+.parcel-cache/
+.vite/
+.cache/
+.tox/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+coverage/
+*.egg-info/
+
+# --- Generated book output ----------------------------------------------------
+# Drafts, renders and exports are produced from disciplines/ — they are output,
+# not source, and they do not belong in context.
+_output/
+_drafts/
+_export/
+*.pdf
+*.epub
+*.docx
+*.odt
+*.mobi
+*.tex
+*.aux
+*.toc
+*.out.log
+
+# --- Large / binary media and editable masters --------------------------------
+# Committed diagrams are indexed; raw masters and media are not.
+assets/diagrams/_source/
+assets/**/*.psd
+assets/**/*.ai
+assets/**/*.fig
+assets/**/*.sketch
+assets/**/*.excalidraw
+assets/**/*.xcf
+assets/**/*.raw
+assets/**/*.tiff
+assets/**/*.mp4
+assets/**/*.mov
+assets/**/*.avi
+assets/**/*.wav
+assets/**/*.mp3
+assets/**/*.zip
+assets/**/*.tar.gz
+assets/**/*.7z
+
+# --- Logs, telemetry, OS and editor noise -------------------------------------
+*.log
+logs/
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.code-workspace
+.history/
+
+# --- Notebooks and scratch ----------------------------------------------------
+*.ipynb
+scratch/
+tmp/
+temp/
